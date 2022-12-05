@@ -34,7 +34,21 @@
         <section class="col-9">
             <div class="d-flex justify-content-between align-items-center pb-2">
                 <header>
-                    <span>Showing <strong>10</strong> of <strong>16</strong> Results</span>
+                    <span *ngIf="this.totalCount && this.totalCount > 0">
+                        Showing 
+                        <strong>{{(this.shopParams.pageIndex - 1) * this.shopParams.pageSize + 1}} -
+                                {{this.shopParams.pageIndex * this.shopParams.pageSize
+                                    > this.totalCount ? this.totalCount
+                                    : this.shopParams.pageIndex * this.shopParams.pageSize 
+                                }}
+                        </strong> 
+                        of 
+                        <strong>{{this.totalCount}}</strong> 
+                        Results
+                    </span>
+                    <span *ngIf="this.totalCount === 0">
+                        There are <strong>0</strong> results
+                    </span>
                 </header>
                 <form class="mt-2">
                     <input type="text" class="form-control d-inline me-2" style="width: 300px" placeholder="Search">
@@ -48,7 +62,8 @@
                     <app-product-item [product]="item"></app-product-item>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center"
+                *ngIf="this.totalCount && this.totalCount > 0">
                 <pagination 
                     [boundaryLinks]="true" 
                     [totalItems]="this.totalCount"
