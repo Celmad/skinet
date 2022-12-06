@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { RouterModule } from '@angular/router';
+import { ShopRoutingModule } from './shop-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,7 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
-  ],
-  exports: [ShopComponent]
+    ShopRoutingModule
+  ]
 })
 export class ShopModule { }
