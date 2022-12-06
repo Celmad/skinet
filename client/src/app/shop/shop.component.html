@@ -13,7 +13,7 @@
             <ul class="list-group my-3">
                 <li class="list-group-item" 
                     *ngFor="let type of types" 
-                    [class.active]="type.id === this.shopParams.typeId"
+                    [class.active]="type.id === shopParams.typeId"
                     [value]="type.id" (click)="onTypeSelected(type.id)">
                     {{type.name}}
                 </li>
@@ -23,7 +23,7 @@
             <ul class="list-group my-3">
                 <li class="list-group-item" 
                     *ngFor="let brand of brands"
-                    [class.active]="brand.id === this.shopParams.brandId" 
+                    [class.active]="brand.id === shopParams.brandId" 
                     [value]="brand.id"
                     (click)="onBrandSelected(brand.id)">
                     {{brand.name}}
@@ -35,10 +35,10 @@
             <div class="d-flex justify-content-between align-items-center pb-2">
                 <app-paging-header
                     [totalCount]="totalCount"
-                    [pageSize]="this.shopParams.pageSize"
-                    [pageIndex]="this.shopParams.pageIndex">
+                    [pageSize]="shopParams.pageSize"
+                    [pageIndex]="shopParams.pageIndex">
                 </app-paging-header>
-                
+
                 <form class="mt-2">
                     <input type="text" class="form-control d-inline me-2" style="width: 300px" placeholder="Search">
                     <button class="btn btn-outline-primary me-2 mb-1">Search</button>
@@ -52,17 +52,12 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center"
-                *ngIf="this.totalCount && this.totalCount > 0">
-                <pagination 
-                    [boundaryLinks]="true" 
-                    [totalItems]="this.totalCount"
-                    [itemsPerPage]="this.shopParams.pageSize"
-                    (pageChanged)="onPageChanged($event)"
-                    previousText="&lsaquo;" 
-                    nextText="&rsaquo;"
-                    firstText="&laquo;" 
-                    lastText="&raquo;">
-                </pagination>
+                *ngIf="totalCount && totalCount > 0">
+                <app-pager
+                    [totalCount]="totalCount"
+                    [pageSize]="shopParams.pageSize"
+                    (pageChanged)="onPageChanged($event)">
+                </app-pager>
             </div>
         </section>
     </div>
