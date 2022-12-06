@@ -3,17 +3,22 @@
     <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="bg-info">
 
     <div class="card-body d-flex flex-column">
-        <a href="#">
+        <a routerLink="/shop/{{product.id}}">
             <h6 class="text-uppercase">{{product.name}}</h6>
         </a>
 
         <span class="mb-2">{{product.price | currency}}</span>
 
         <div class="btn-group mt-auto">
-            <button type="button" class="btn btn-sm btn-outline-secondary">
+            <button
+                type="button" 
+                class="btn btn-sm btn-outline-secondary">
                 <fa-icon [icon]="faShoppingCart"></fa-icon>
             </button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">
+            <button
+                routerLink="/shop/{{product.id}}" 
+                type="button" 
+                class="btn btn-sm btn-outline-secondary">
                 View
             </button>
         </div>

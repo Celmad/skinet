@@ -5,20 +5,22 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     ShopComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [ShopComponent]
 })
