@@ -40,9 +40,26 @@
                 </app-paging-header>
 
                 <form class="mt-2">
-                    <input type="text" class="form-control d-inline me-2" style="width: 300px" placeholder="Search">
-                    <button class="btn btn-outline-primary me-2 mb-1">Search</button>
-                    <button class="btn btn-outline-success mb-1">Reset</button>
+                    <input
+                        id="search"
+                        [formControl]="search"
+                        (keyup.enter)="onSearch()"
+                        type="text" 
+                        class="form-control d-inline me-2" 
+                        style="width: 300px" 
+                        placeholder="Search">
+                    <button 
+                        class="btn btn-outline-primary me-2 mb-1"
+                        (click)="onSearch()"
+                        type="button">
+                        Search
+                    </button>
+                    <button 
+                        class="btn btn-outline-success mb-1"
+                        (click)="onReset()"
+                        type="button">
+                        Reset
+                    </button>
                 </form>
             </div>
 

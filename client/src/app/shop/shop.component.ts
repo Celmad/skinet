@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { IBrand } from '../shared/models/brand';
 import { IProduct } from '../shared/models/product';
 import { IType } from '../shared/models/productType';
@@ -16,6 +17,7 @@ export class ShopComponent implements OnInit {
   brands: IBrand[];
   shopParams: ShopParams = new ShopParams();
   totalCount: number;
+  search = new FormControl('');
   sortOptions = [
     { name: 'Alphabetical', value: 'name'},
     { name: 'Price: Low to High', value: 'priceAsc'},
@@ -74,6 +76,17 @@ export class ShopComponent implements OnInit {
   onPageChanged(event: any) {
     this.shopParams.pageIndex = event;
     this.getProducts(); 
+  }
+
+  onSearch() {
+    this.shopParams.search = this.search.value;
+    this.getProducts();
+  }
+
+  onReset() {
+    this.search.setValue('');
+    this.shopParams = new ShopParams();
+    this.getProducts();
   }
 
 }
