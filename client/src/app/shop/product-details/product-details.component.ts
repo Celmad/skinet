@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/models/product';
 import { ShopService } from '../shop.service';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-product-details',
@@ -16,7 +17,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private shopService: ShopService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private breadcrumbService: BreadcrumbService) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -25,7 +27,10 @@ export class ProductDetailsComponent implements OnInit {
   getProduct() {
     let productId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.shopService.getProduct(productId).subscribe({
-      next: (p) => this.product = p,
+      next: (p) => {
+        this.product = p;
+        this.breadcrumbService.set('@productDetails', p.name)
+      },
       error: (e) => console.error(e)
     });
   }
