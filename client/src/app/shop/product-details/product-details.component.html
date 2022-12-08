@@ -1,16 +1,16 @@
 <div
-    class="row"
+    class="row mt-5"
     *ngIf="product">
     <div class="col-6">
         <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="w-100">
     </div>
     <div class="col-6">
         <h3>{{product.name}}</h3>
-        <p>{{product.price | currency}}</p>
+        <p class="fs-4">{{product.price | currency}}</p>
         <div class="d-flex justify-content-start align-items-center">
-            <fa-icon [icon]="faMinusCircle" [classes]="['me-2 text-warning']"></fa-icon>
+            <fa-icon [icon]="faMinusCircle" [classes]="['fa-2x me-2 text-warning']"></fa-icon>
             <span class="font-weight-bold" style="font-size: 1.5em">2</span>
-            <fa-icon [icon]="faPlusCircle" [classes]="['mx-2 text-warning']"></fa-icon>
+            <fa-icon [icon]="faPlusCircle" [classes]="['fa-2x mx-2 text-warning']"></fa-icon>
 
             <button class="btn btn-outline-secondary btn-lg ms-4">Add to Cart</button>
         </div>

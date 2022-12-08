@@ -18,7 +18,10 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
-    private breadcrumbService: BreadcrumbService) { }
+    private breadcrumbService: BreadcrumbService) {
+      // empty breadcrumb while page is loading
+      this.breadcrumbService.set('@productDetails',' ');
+    }
 
   ngOnInit(): void {
     this.getProduct();
@@ -29,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     this.shopService.getProduct(productId).subscribe({
       next: (p) => {
         this.product = p;
+        // productDetail alias set in shop-routing.module
         this.breadcrumbService.set('@productDetails', p.name)
       },
       error: (e) => console.error(e)

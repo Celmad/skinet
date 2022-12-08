@@ -1,17 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
-
-/* Importing Bootswatch theme for Bootstrap */
-@import "node_modules/bootswatch/dist/yeti/bootstrap";
-
-/* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
-
-/* Importing Tastr CSS file. */
-@import "node_modules/ngx-toastr/toastr";
-
 .xng-breadcrumb-root {
     padding: 8px 16px;
     display: inline;
