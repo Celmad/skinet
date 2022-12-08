@@ -3,6 +3,9 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+/* Importing Bootswatch theme for Bootstrap */
+@import "node_modules/bootswatch/dist/yeti/bootstrap";
+
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
