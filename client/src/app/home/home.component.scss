@@ -1,0 +1,14 @@
+img {
+    object-fit: cover;
+    height: 600px;
+    width: 100%;
+}
+
+img > slide {
+    display: block;
+    width: 100%;
+}
+
+.featured {
+    height: 250px;
+}
