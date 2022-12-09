@@ -4,6 +4,7 @@ import { IProduct } from 'src/app/shared/models/product';
 import { ShopService } from '../shop.service';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { BreadcrumbService } from 'xng-breadcrumb';
+import { BasketService } from 'src/app/basket/basket.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,20 +12,37 @@ import { BreadcrumbService } from 'xng-breadcrumb';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  product: IProduct;
   faMinusCircle = faMinusCircle;
   faPlusCircle = faPlusCircle;
+
+  product: IProduct;
+  quantity: number = 1
 
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
-    private breadcrumbService: BreadcrumbService) {
+    private breadcrumbService: BreadcrumbService,
+    private basketService: BasketService) {
       // empty breadcrumb while page is loading
       this.breadcrumbService.set('@productDetails',' ');
     }
 
   ngOnInit(): void {
     this.getProduct();
+  }
+
+  addItemToBasket() {
+    this.basketService.addItemToBasket(this.product, this.quantity);
+  }
+
+  incrementQuantity() {
+    this.quantity++;
+  }
+
+  decrementQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
   }
 
   getProduct() {

@@ -12,9 +12,11 @@
         <a class="p-2" routerLink="/test-error" routerLinkActive="active">Errors</a>
     </nav>
     <div class="d-flex align-items-center gap-2">
-        <a class="position-relative">
+        <a class="position-relative" routerLink="/basket">
             <fa-icon [icon]="faShoppingCart" [classes]="['fa-2x me-5 text-dark']"></fa-icon>
-            <div class="cart-no">5</div>
+            <div class="cart-no" *ngIf="(basket$ | async) as basket">
+                {{basket.items.length}}
+            </div>
         </a>
         <a class="btn btn-outline-secondary">Login</a>
         <a class="btn btn-outline-secondary">Sign up</a>
