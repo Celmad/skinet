@@ -1,0 +1,30 @@
+<div class="form-floating mb-2">
+
+    <input 
+        [ngClass]="inputClass"
+        [type]="type"
+        (input)="onChange($event.target.value)"
+        (blur)="onTouched()"
+        #input
+        class="form-control" 
+        id="{{label}}" 
+        placeholder="{{label}}">
+
+    <div *ngIf="isPending" class="loader">
+        <fa-icon [icon]="faSpinner"></fa-icon>
+    </div>
+
+    <label for="{{label}}">{{label}}</label>
+
+    <div class="invalid-feedback" 
+        *ngIf="isInvalid && isTouched">
+        <span *ngIf="controlDir.control.errors?.required">{{label}} is required</span>
+        <span *ngIf="controlDir.control.errors?.pattern">Invalid email address</span>
+    </div>
+
+    <div class="invalid-feedback d-block"
+        *ngIf="isInvalid && isDirty">
+        <span *ngIf="controlDir.control.errors?.emailExists">Email is already in used</span>
+    </div>
+
+</div>
